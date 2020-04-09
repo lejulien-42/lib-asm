@@ -15,8 +15,8 @@ loop:
 	je loop
 
 return:
-	mov al, byte [rsi + rax]
-	sub al, byte [rdi + rax]
-	mov rax, al
+	mov dl, byte [rsi + rax]
+	sub dl, byte [rdi + rax]
+	mov rax, dl
 	ret
 
