@@ -3,20 +3,41 @@ section .text
 global _ft_strcmp
 
 _ft_strcmp:
-	mov rax, -1
+	mov rcx, -1
 loop:
-	inc rax
-	cmp byte [rsi + rax], 0
-	je return
-	cmp byte [rdi + rax], 0
-	je return
-	mov dl, byte [rsi + rax]
-	cmp byte dl, byte [rdi + rax]
+	inc rcx
+	cmp byte [rsi + rcx], 0
+	je test_rdi
+	cmp byte [rdi + rcx], 0
+	je test_rsi
+	mov dl, byte [rsi + rcx]
+	cmp byte dl, byte [rdi + rcx]
 	je loop
 
-return:
-	mov dl, byte [rsi + rax]
-	sub dl, byte [rdi + rax]
-	mov rax, dl
+test_rdi:
+	cmp byte [rdi + rcx], 0
+	je retzero
+	mov dl, byte [rsi + rcx]
+	cmp byte dl, byte [rdi + rcx]
+	jl retone
+	jmp retminus
+
+test_rsi:
+	cmp byte [rsi + rcx], 0
+	je retzero
+	mov dl, byte [rsi + rcx]
+	cmp byte dl, byte [rdi + rcx]
+	jl retone
+	jmp retminus
+
+retzero:
+	mov rax, 0
 	ret
 
+retone:
+	mov rax, 1
+	ret
+
+retminus:
+	mov rax, -1
+	ret
