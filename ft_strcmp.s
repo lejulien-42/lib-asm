@@ -6,18 +6,17 @@ _ft_strcmp:
 	mov rcx, -1
 loop:
 	inc rcx
+	mov dl, byte [rsi + rcx]
 	cmp byte [rsi + rcx], 0
 	je test_rdi
 	cmp byte [rdi + rcx], 0
 	je test_rsi
-	mov dl, byte [rsi + rcx]
 	cmp byte dl, byte [rdi + rcx]
 	je loop
 
 test_rdi:
 	cmp byte [rdi + rcx], 0
 	je retzero
-	mov dl, byte [rsi + rcx]
 	cmp byte dl, byte [rdi + rcx]
 	jl retone
 	jmp retminus
@@ -25,7 +24,6 @@ test_rdi:
 test_rsi:
 	cmp byte [rsi + rcx], 0
 	je retzero
-	mov dl, byte [rsi + rcx]
 	cmp byte dl, byte [rdi + rcx]
 	jl retone
 	jmp retminus
