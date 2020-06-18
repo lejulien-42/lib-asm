@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_write.c                                       :+:      :+:    :+:   */
+/*   main_read.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/01 03:00:08 by lejulien          #+#    #+#             */
-/*   Updated: 2020/06/18 17:35:11 by lejulien         ###   ########.fr       */
+/*   Created: 2020/06/18 18:48:45 by lejulien          #+#    #+#             */
+/*   Updated: 2020/06/18 19:24:35 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <stdio.h>
 
-int write(int fd, const void *buf, int count);
+int read(int fd, void *buf, int count);
 
 int
-	main()
+	main(void)
 {
-	char *text = "Hello world\n";
-	write(1, text, strlen(text));
+	char *res = NULL;
+	if (read(1, NULL, 4) == 0)
+		printf("ok\n");
+	else
+		printf("%s\n", res);
 	return (0);
 }
