@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_write.c                                       :+:      :+:    :+:   */
+/*   main_testeur.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/01 03:00:08 by lejulien          #+#    #+#             */
-/*   Updated: 2020/06/18 17:35:11 by lejulien         ###   ########.fr       */
+/*   Created: 2020/06/28 17:53:25 by lejulien          #+#    #+#             */
+/*   Updated: 2020/06/28 18:20:02 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <strings.h>
+#include <stdio.h>
 
-int write(int fd, const void *buf, int count);
-
-int
-	main()
+int main(void)
 {
-	char *text = "Hello world\n";
-	write(1, text, strlen(text));
+	printf("\e[94m");
+	printf(" _,  _ __,  _,  _, _, _    ___ __,  _, ___ __, __,\n |   | |_) / \\ (_  |\\/|     |  |_  (_   |  |_  |_)\n | , | |_) |~| , ) |  | ~~  |  |   , )  |  |   | \\\n ~~~ ~ ~   ~ ~  ~  ~  ~     ~  ~~~  ~   ~  ~~~ ~ ~\n");
+	printf("\e[93m\t\t\t\t\t#by lejulien\n\n");
 	return (0);
 }

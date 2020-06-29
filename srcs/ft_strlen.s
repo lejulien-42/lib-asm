@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/04/08 13:54:16 by lejulien          #+#    #+#              #
-#    Updated: 2020/04/08 17:06:43 by lejulien         ###   ########.fr        #
+#    Created: 2020/06/26 18:33:15 by lejulien          #+#    #+#              #
+#    Updated: 2020/06/28 18:17:02 by lejulien         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,15 @@ section .text
 global _ft_strlen
 
 _ft_strlen:
-	mov rax, -1
-loop:
-	inc rax
-	cmp byte [rdi + rax], 0
-	jne loop
-	ret
+	push rbp
+	mov rbp, rsp
+	mov rcx, -1
 
+loop:
+	inc rcx
+	cmp byte [rdi + rcx], 0
+	jne loop
+	mov rax, rcx
+	mov rsp, rbp
+	pop rbp
+	ret
