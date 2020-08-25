@@ -6,13 +6,14 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 18:17:37 by lejulien          #+#    #+#             */
-/*   Updated: 2020/06/28 03:07:41 by lejulien         ###   ########.fr       */
+/*   Updated: 2020/08/25 15:05:03 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <errno.h>
 #include <fcntl.h>
 #define GREEN "\e[32m"
 #define WHITE "\e[39m"
@@ -33,7 +34,8 @@ int		main(void)
 	int null_ft = open("ft_write.txt", O_RDWR | O_CREAT, 77777);
 	int ret1;
 	int ret2;
-
+	int errno1;
+	int errno2;
 	// Test 1
 	printf(WHITE);
 	printf("    ");
@@ -63,8 +65,12 @@ int		main(void)
 	else
 		printf("✅\n");
 	printf("    test of null entry : ");
+	errno = 0;
 	ret1 = write(null, NULL, 1);
+	errno1 = errno;
+	errno = 0;
 	ret2 = write(null_ft, NULL, 1);
+	errno2 = errno;
 	if (ret1 == -1 && ret2 != -1)
 	{	
 		printf("🚫\n");
@@ -72,4 +78,5 @@ int		main(void)
 	}
 	else
 		printf("✅\n");
+	printf("    errno write -=> %d\n    errno ft_write -=> %d\n", errno1, errno2);
 }

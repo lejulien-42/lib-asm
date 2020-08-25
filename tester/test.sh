@@ -1,5 +1,7 @@
-
 # Made by lejulien
+
+make -C ../.
+cp ../libasm.a .
 
 #Showing the Title and starn loading
 gcc -o main_testeur main_testeur.c
