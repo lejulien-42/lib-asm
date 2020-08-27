@@ -1,31 +1,29 @@
 NAME = launcher
 
-$(name):
-	make -C linux_version/.
-	mv linux_version/libasm.a .
+DIRECT :=
 
-mac:
-	make -C mac_version/.
-	mv mac_version/libasm.a .
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Linux)
+	DIRECT += linux_version
+endif
+ifeq ($(UNAME_S),Darwin)
+	DIRECT += mac_version
+endif
 
-linux:
-	make -C linux_version/.
-	mv linux_version/libasm.a .
+$(NAME):
+	make -C $(DIRECT)
+	mv $(DIRECT)/libasm.a .
 
 re:
-	make -C linux_version/. fclean
-	make -C mac_version/. fclean
-	make -C linux_version/.
-	make -C mac_version/.
+	make -C $(DIRECT) fclean
+	make -C $(DIRECT)
 
 clean:
-	make -C linux_version/. clean
-	make -C mac_version/. clean
+	make -C $(DIRECT) clean
 	rm libasm.a
 	
 fclean:
-	make -C linux_version/. fclean
-	make -C mac_version/. fclean
+	make -C $(DIRECT) fclean
 	rm libasm.a
 
 test_linux: linux
