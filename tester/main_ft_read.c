@@ -102,4 +102,5 @@ int		main(void)
 	ft_read(null_ft, ret4, 50);
 	errno2 = errno;
 	printf("-=>%d %d\n", errno1, errno2);
+	return (0);
 }

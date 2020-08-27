@@ -20,7 +20,6 @@ re:
 
 clean:
 	make -C $(DIRECT) clean
-	rm libasm.a
 	
 fclean:
 	make -C $(DIRECT) fclean

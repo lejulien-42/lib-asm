@@ -3,11 +3,11 @@ section .text
 global ft_write
 
 ft_write:
-	mov rax, 4
+	mov rax, 1
 	syscall
 	jc _nullpointer
 	ret
 
 _nullpointer:
-	mov rax, -1
+	mov rax, 3
 	ret
