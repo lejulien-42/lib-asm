@@ -1,6 +1,6 @@
 # Made by lejulien
 
-make -C ../.
+make -C ../. linux
 cp ../libasm.a .
 
 #Showing the Title and starn loading
@@ -21,7 +21,7 @@ gcc -o main_ft_strdup main_ft_strdup.c libasm.a
 ./main_ft_strcpy
 ./main_ft_strcmp
 ./main_ft_write
-./main_ft_read
+#./main_ft_read
 ./main_ft_strdup
 
 # removing binaries

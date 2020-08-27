@@ -1,9 +1,9 @@
 
 section .text
-global _ft_strdup
-extern _malloc
+global ft_strdup
+extern malloc
 
-_ft_strdup:
+ft_strdup:
 	cmp rdi, 0
 	jz null_str
 
@@ -18,7 +18,7 @@ strlen_loop:
 allocating:
 	push rdi
 	mov rdi, rcx
-	call _malloc
+	call malloc
 	pop rdi
 	cmp rax, 0
 	jz null_str

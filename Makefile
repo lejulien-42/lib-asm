@@ -1,43 +1,33 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lejulien <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/06/29 16:01:57 by lejulien          #+#    #+#              #
-#    Updated: 2020/06/29 16:17:26 by lejulien         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME = launcher
 
-SRCS = 	./srcs/ft_read.s \
-	   	./srcs/ft_strcmp.s \
-	   	./srcs/ft_strcpy.s \
-	   	./srcs/ft_strdup.s \
-	   	./srcs/ft_strlen.s \
-	   	./srcs/ft_write.s
+$(name):
+	make -C linux_version/.
+	mv linux_version/libasm.a .
 
-OBJS =	$(SRCS:.s=.o)
+mac:
+	make -C mac_version/.
+	mv mac_version/libasm.a .
 
-FLAGS =	-f macho64
+linux:
+	make -C linux_version/.
+	mv linux_version/libasm.a .
 
-.s.o:
-	nasm $(FLAGS) $<
-
-NAME =	libasm.a
-
-all:	$(NAME)
-
-$(NAME):	$(OBJS)
-			ar rc $(NAME) $(OBJS)
-			ranlib $(NAME)
+re:
+	make -C linux_version/. fclean
+	make -C mac_version/. fclean
+	make -C linux_version/.
+	make -C mac_version/.
 
 clean:
-			/bin/rm -f $(OBJS)
+	make -C linux_version/. clean
+	make -C mac_version/. clean
+	rm libasm.a
+	
+fclean:
+	make -C linux_version/. fclean
+	make -C mac_version/. fclean
+	rm libasm.a
 
-fclean: clean
-			/bin/rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: clean fclean re
+test_linux: linux
+	mv libasm.a tester/.
+	make -C tester/.
