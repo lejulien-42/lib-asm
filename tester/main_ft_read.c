@@ -6,7 +6,7 @@
 /*   By: lejulien <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/26 18:17:37 by lejulien          #+#    #+#             */
-/*   Updated: 2020/08/25 16:26:44 by lejulien         ###   ########.fr       */
+/*   Updated: 2020/08/29 14:48:37 by lejulien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void
 	is_ctrl = 1;
 	printf(GREEN);
 	printf("    Thx\n");
+	system("rm main_ft_read");
 	printf(WHITE);
 }
 

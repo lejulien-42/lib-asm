@@ -31,4 +31,3 @@ rm ft_write.txt
 ./main_ft_strdup
 rm main_ft_strdup
 ./main_ft_read
-rm main_ft_read
