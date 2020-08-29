@@ -15,7 +15,7 @@ gcc -o main_ft_strcpy main_ft_strcpy.c libasm.a
 gcc -o main_ft_strcmp main_ft_strcmp.c libasm.a
 gcc -o main_ft_write main_ft_write.c libasm.a
 gcc -o main_ft_read main_ft_read.c libasm.a
-gcc -o main_ft_strdup main_ft_strdup.c libasm.a
+gcc -no-pie -o main_ft_strdup main_ft_strdup.c libasm.a
 
 # executing binaries
 ./main_ft_strlen
